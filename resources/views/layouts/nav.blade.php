@@ -17,7 +17,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if (request()->route()->getName() == 'enseig') active @endif"
-                        href="{{ route('enseig') }}">Enseignements</a>
+                        href="{{ route('enseignement.index') }}">Enseignements</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if (request()->route()->getName() == 'pensees.index') active @endif"

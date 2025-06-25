@@ -16,7 +16,7 @@
                 <ul class="list-unstyled footer-links">
                     <li class="mb-2"><a href="{{ route('home') }}">Accueil</a></li>
                     <li class="mb-2"><a href="{{ route('evang') }}">Évangélisation</a></li>
-                    <li class="mb-2"><a href="{{ route('enseig') }}">Enseignements</a></li>
+                    <li class="mb-2"><a href="{{ route('enseignement.index') }}">Enseignements</a></li>
                     <li class="mb-2"><a href="{{ route('events') }}">Événements</a></li>
                 </ul>
             </div>

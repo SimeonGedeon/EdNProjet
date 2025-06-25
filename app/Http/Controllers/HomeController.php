@@ -10,10 +10,23 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $pensees = Pensee::pensees()->paginate(3);
+        // 1. Dernière pensée publiée (mise en avant, pensée du jour)
+        $pensedujr = Pensee::where('est_publie', true)
+            ->orderBy('date_publication', 'desc') // plus cohérent que created_at
+            ->first();
 
+        // 2. 3 pensées publiées, sauf la dernière pensée du jour
+        $pensees = Pensee::where('est_publie', true)
+            ->when($pensedujr, function ($query) use ($pensedujr) {
+                $query->where('id', '!=', $pensedujr->id);
+            })
+            ->orderBy('date_publication', 'desc')
+            ->paginate(3);
+
+        // 3. Nombre total de pensées publiées
         $count = Pensee::where('est_publie', true)->count();
-        $pensedujr = Pensee::latest()->first(); // ou ->orderBy('created_at', 'desc')->first()
+
+        // 4. Vérifie s’il y a au moins une pensée en base
         $hasPensees = Pensee::exists();
 
         return view('home', compact('pensees', 'pensedujr', 'hasPensees', 'count'));

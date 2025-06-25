@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnseignementController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenseeController;
 use App\Models\Pensee;
@@ -11,13 +12,19 @@ use Illuminate\View\ViewException;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/evangelisation', function () {
-    return view('evangelisation');
+    return view('evangelisation.index');
 })->name('evang');
 
-Route::get('/enseignements', function () {
-    $today = Carbon::now();
-    return view('enseignements', compact('today'));
-})->name('enseig');
+Route::get('/evangelisation/accepter-jesus', function () {
+    return view('evangelisation.salut');
+})->name('accepter-jesus');
+
+//enseignement
+Route::middleware(['auth'])->group(function () {
+    Route::resource('enseignements', EnseignementController::class)->except(['show']); // La route show sera accessible sans auth
+
+    Route::get('/enseignements/{enseignement}', [EnseignementController::class, 'show'])->name('enseignements.show');
+});
 
 Route::get('/evenements', function () {
     return view('evenements');
@@ -33,14 +40,12 @@ Route::get('/contact', function () {
 
 //Pensées du jour
 Route::get('/pensees-du-jour', [PenseeController::class, 'index'])->name('pensees.index');
+Route::post('/pensee-du-jour', [PenseeController::class, 'store'])->name('pensees.store');
 Route::get('/pensee-du-jour/{id}', [PenseeController::class, 'show'])->name('pensees.show');
 
 Route::get('/admin', function () {
     return view('admin.dash');
 });
-
-Route::post('/pensees', [PenseeController::class, 'store']);
-Route::get('/pensees', [PenseeController::class, 'index']);
 
 Route::get('/article', function () {
     return view('article');

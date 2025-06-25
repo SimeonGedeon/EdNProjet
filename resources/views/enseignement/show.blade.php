@@ -9,9 +9,9 @@
             <div class="badge bg-light text-primary mb-3">Article</div>
             <h1 class="article-title display-4">La mise à jour de notre pensée</h1>
             <div class="article-meta justify-content-center">
-                <img src="https://source.unsplash.com/random/200x200/?pastor" alt="Auteur" class="author-img">
+                <img src="{{ asset('image/sigedeon.png') }}" alt="Auteur" class="author-img">
                 <div class="text-start">
-                    <p class="mb-0 fw-bold">Par Steve Rivière</p>
+                    <p class="mb-0 fw-bold">Par Siméon G. Kimbungu</p>
                     <small>Publié le 15 novembre 2023 • 5 min de lecture</small>
                 </div>
             </div>
@@ -64,10 +64,10 @@
             <!-- Section partage -->
             <div class="share-section text-center">
                 <h3 class="h5 mb-3">Partager cette pensée</h3>
-                <a href="#" class="share-btn bg-facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="share-btn bg-twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="share-btn bg-whatsapp"><i class="bi bi-whatsapp"></i></a>
-                <a href="#" class="share-btn bg-linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="share-btn bg-primary"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="share-btn bg-primary"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="share-btn bg-primary"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="share-btn bg-primary"><i class="bi bi-linkedin"></i></a>
                 <a href="#" class="share-btn bg-primary"><i class="bi bi-link-45deg"></i></a>
             </div>
 
@@ -80,8 +80,8 @@
                     </div>
                     <div class="col-md-9">
                         <div class="card-body">
-                            <h3 class="card-title">Steve Rivière</h3>
-                            <p class="card-text">Pasteur et enseignant biblique, Steve Rivière partage régulièrement des
+                            <h3 class="card-title">Siméon G. Kimbungu</h3>
+                            <p class="card-text">Evangéliste et enseignant biblique, Siméon G. partage régulièrement des
                                 pensées inspirantes pour encourager la croissance spirituelle.</p>
                             <a href="#" class="btn btn-outline-primary">Voir tous ses articles</a>
                         </div>

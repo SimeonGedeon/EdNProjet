@@ -40,13 +40,12 @@ class PenseeController extends Controller
         // Si la pensée est publiée, on peut déclencher des actions supplémentaires
         if ($pensee->est_publie) {
             $this->publierPensee($pensee);
-        }
 
-        return response()->json([
-            'message' => 'Pensée enregistrée avec succès',
-            'publiee' => $pensee->est_publie,
-            'pensee' => $pensee
-        ], 201);
+            // Redirection vers la page d'accueil avec message flash
+            return redirect()->route('home')->with('success', 'Pensée publiée avec succès.');
+        } else {
+            return redirect()->route('home')->with('success', 'Pensée enregistrée (non publiée).');
+        }
     }
 
     protected function publierPensee(Pensee $pensee)

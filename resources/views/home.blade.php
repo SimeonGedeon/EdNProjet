@@ -3,7 +3,11 @@
 @section('title', 'Accueil')
 
 @section('content')
-
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <!-- Pensée du Jour -->
     <section class="py-5 bg-light">
         <div class="container">
@@ -116,7 +120,8 @@
                                     <!-- Tag et catégorie -->
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <span class="badge bg-secondary">{{ $item->tag }}</span>
-                                        <small class="text-muted">{{ $item->date_publication->locale('fr')->diffForHumans() }}</small>
+                                        <small
+                                            class="text-muted">{{ $item->date_publication->locale('fr')->diffForHumans() }}</small>
                                     </div>
 
 

@@ -230,6 +230,87 @@
         </div>
     </section>
 
+    <!-- Contactez-nous -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Contactez-nous</h2>
+            <p class="text-center lead mb-5">Nous sommes à votre écoute pour toute question ou collaboration</p>
+
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="contact-info">
+                        <div class="contact-item mb-4">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Adresse</h4>
+                                <p>Kisenso Kinshasa, RDC</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item mb-4">
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Téléphone</h4>
+                                <p>+243 827 991 842</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item mb-4">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>contact@evangelistedunet.org</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-clock-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Heures d'ouverture</h4>
+                                <p>Lundi - Vendredi: 9h - 17h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="contact-form">
+                        <form action="{{-- {{ route('contact.submit') }} --}}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Votre nom</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Votre email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Sujet</label>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Votre message</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send-fill me-2"></i>Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 @section('styles')
@@ -415,6 +496,45 @@
             /* Augmente l'espace au-dessus du contenu hero */
             margin-top: -4rem;
             /* Compense l'espace ajouté */
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            height: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0.3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form .form-control {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(58, 123, 213, 0.25);
         }
     </style>
 @endsection

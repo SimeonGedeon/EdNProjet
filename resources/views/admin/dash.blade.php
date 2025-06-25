@@ -161,7 +161,7 @@
                                 <h5 class="mb-0">Nouvelle Pensée du Jour</h5>
                             </div>
                             <div class="card-body">
-                                <form action="/pensees" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('pensees.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="etudeTitle" class="form-label">Titre</label>
@@ -197,7 +197,6 @@
                                             name="est_publie" value="1">
                                         <label class="form-check-label" for="est_publie">Publier immédiatement</label>
                                     </div>
-
                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                                 </form>
                             </div>
@@ -211,15 +210,15 @@
                                 <h5 class="mb-0">Nouvel Enseignement</h5>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form action="{{ route('enseignements.store') }}" method="POST" enctype="multipart/form-data"> @csrf
                                     <div class="mb-3">
                                         <label for="enseignementTitle" class="form-label">Titre</label>
-                                        <input type="text" class="form-control" id="enseignementTitle"
+                                        <input type="text" class="form-control" id="enseignementTitle" name="titre"
                                             placeholder="Les fondements de la foi">
                                     </div>
                                     <div class="mb-3">
                                         <label for="enseignementCategory" class="form-label">Catégorie</label>
-                                        <select class="form-select" id="enseignementCategory">
+                                        <select class="form-select" id="enseignementCategory" name="categorie">
                                             <option selected>Choisir une catégorie</option>
                                             <option>Doctrine</option>
                                             <option>Vie pratique</option>
@@ -228,23 +227,28 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="enseignementContent" class="form-label">Contenu</label>
-                                        <textarea class="form-control" id="enseignementContent" rows="10"></textarea>
+                                        <textarea class="form-control" id="enseignementContent" name="contenu" rows="10"></textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="enseignementImage" class="form-label">Image principale</label>
-                                            <input class="form-control" type="file" id="enseignementImage">
+                                            <input class="form-control" type="file" id="enseignementImage"
+                                                name="img">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="hastag" class="form-label">Hastag</label>
-                                            <input type="text" class="form-control" id="hastag"
+                                            <input type="text" class="form-control" id="hastag" name="hastag"
                                                 placeholder="#Foi #Chrétienete">
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <button type="button" class="btn btn-outline-secondary">Enregistrer comme
-                                            brouillon</button>
-                                        <button type="submit" class="btn btn-success">Publier l'enseignement</button>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button type="submit" name="est_publie" value="0"
+                                            class="btn btn-outline-secondary">
+                                            Enregistrer comme brouillon
+                                        </button>
+                                        <button type="submit" name="est_publie" value="1" class="btn btn-success">
+                                            <i class="bi bi-send"></i> Publier l'enseignement
+                                        </button>
                                     </div>
                                 </form>
                             </div>
